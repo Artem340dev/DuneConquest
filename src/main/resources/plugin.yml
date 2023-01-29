@@ -1,0 +1,9 @@
+name: DuneConquest
+version: '${project.version}'
+main: org.millida.duneconquest.DuneConquestPlugin
+api-version: 1.16
+author: MillidaStudio
+website: https://vk.com/millida
+commands:
+  duneconquest:
+    aliases: [dc, dconquest]

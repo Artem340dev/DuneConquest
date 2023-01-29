@@ -1,0 +1,212 @@
+items:
+  sardaukar-boots:
+    name: Ботинки Сардаукаров
+    material: DIAMOND_BOOTS
+    lore: {}
+    customModelData: 0
+    durability: 310
+    enchantments:
+      PROTECTION_ENVIRONMENTAL: 4
+      PROTECTION_EXPLOSIONS: 4
+      PROTECTION_FALL: 4
+      PROTECTION_FIRE: 4
+      PROTECTION_PROJECTILE: 4
+    effects: {}
+  sardaukar-leggings:
+    name: Поножи Сардаукаров
+    material: DIAMOND_LEGGINGS
+    lore: {}
+    customModelData: 0
+    durability: 310
+    enchantments:
+      PROTECTION_ENVIRONMENTAL: 7
+      PROTECTION_EXPLOSIONS: 7
+      PROTECTION_FALL: 7
+      PROTECTION_FIRE: 7
+      PROTECTION_PROJECTILE: 7
+    effects: {}
+  sardaukar-chestplate:
+    name: Кираса Сардаукаров
+    material: DIAMOND_CHESTPLATE
+    lore: {}
+    customModelData: 0
+    durability: 310
+    enchantments:
+      PROTECTION_ENVIRONMENTAL: 8
+      PROTECTION_EXPLOSIONS: 8
+      PROTECTION_FALL: 8
+      PROTECTION_FIRE: 8
+      PROTECTION_PROJECTILE: 8
+    effects: {}
+  sardaukar-helmet:
+    name: Шлем Сардаукаров
+    material: DIAMOND_HELMET
+    lore: {}
+    customModelData: 0
+    durability: 310
+    enchantments:
+      PROTECTION_ENVIRONMENTAL: 4
+      PROTECTION_EXPLOSIONS: 4
+      PROTECTION_FALL: 4
+      PROTECTION_FIRE: 4
+      PROTECTION_PROJECTILE: 4
+    effects:
+      SPEED: 1
+  atreiders-boots:
+    name: Ботинки Атрейдеров
+    material: DIAMOND_BOOTS
+    lore: {}
+    customModelData: 0
+    durability: 310
+    enchantments:
+      PROTECTION_ENVIRONMENTAL: 5
+      PROTECTION_EXPLOSIONS: 5
+      PROTECTION_FALL: 5
+      PROTECTION_FIRE: 5
+      PROTECTION_PROJECTILE: 5
+    effects: {}
+  atreiders-leggings:
+    name: Поножи Атрейдеров
+    material: DIAMOND_LEGGINGS
+    lore: {}
+    customModelData: 0
+    durability: 310
+    enchantments:
+      PROTECTION_ENVIRONMENTAL: 6
+      PROTECTION_EXPLOSIONS: 6
+      PROTECTION_FALL: 6
+      PROTECTION_FIRE: 6
+      PROTECTION_PROJECTILE: 6
+    effects: {}
+  atreiders-chestplate:
+    name: Нагрудник Атрейдеров
+    material: DIAMOND_CHESTPLATE
+    lore: {}
+    customModelData: 0
+    durability: 310
+    enchantments:
+      PROTECTION_ENVIRONMENTAL: 9
+      PROTECTION_EXPLOSIONS: 9
+      PROTECTION_FALL: 9
+      PROTECTION_FIRE: 9
+      PROTECTION_PROJECTILE: 9
+    effects: {}
+  atreiders-helmet:
+    name: Шлем Атрейдеров
+    material: DIAMOND_HELMET
+    lore: {}
+    customModelData: 0
+    durability: 310
+    enchantments:
+      PROTECTION_ENVIRONMENTAL: 5
+      PROTECTION_EXPLOSIONS: 5
+      PROTECTION_FALL: 5
+      PROTECTION_FIRE: 5
+      PROTECTION_PROJECTILE: 5
+    effects:
+      CONDUIT_POWER: 1
+  kharkoneness-boots:
+    name: Берцы Харконеннов
+    material: DIAMOND_BOOTS
+    lore: {}
+    customModelData: 0
+    durability: 310
+    enchantments:
+      PROTECTION_ENVIRONMENTAL: 6
+      PROTECTION_EXPLOSIONS: 6
+      PROTECTION_FALL: 6
+      PROTECTION_FIRE: 6
+      PROTECTION_PROJECTILE: 6
+    effects: {}
+  kharkoneness-leggings:
+    name: Поножи Харконеннов
+    material: DIAMOND_LEGGINGS
+    lore: {}
+    customModelData: 0
+    durability: 310
+    enchantments:
+      PROTECTION_ENVIRONMENTAL: 8
+      PROTECTION_EXPLOSIONS: 8
+      PROTECTION_FALL: 8
+      PROTECTION_FIRE: 8
+      PROTECTION_PROJECTILE: 8
+    effects: {}
+  kharkoneness-chestplate:
+    name: Кираса Харконеннов
+    material: DIAMOND_CHESTPLATE
+    lore: {}
+    customModelData: 0
+    durability: 310
+    enchantments:
+      PROTECTION_ENVIRONMENTAL: 11
+      PROTECTION_EXPLOSIONS: 11
+      PROTECTION_FALL: 11
+      PROTECTION_FIRE: 11
+      PROTECTION_PROJECTILE: 11
+    effects: {}
+  kharkoneness-helmet:
+    name: Шлем Харконеннов
+    material: DIAMOND_HELMET
+    lore: {}
+    customModelData: 0
+    durability: 310
+    enchantments:
+      PROTECTION_ENVIRONMENTAL: 7
+      PROTECTION_EXPLOSIONS: 7
+      PROTECTION_FALL: 7
+      PROTECTION_FIRE: 7
+      PROTECTION_PROJECTILE: 7
+    effects:
+      SLOW: 1
+  kondenskostyum-boots:
+    name: Ботинки конденскостюма
+    material: DIAMOND_BOOTS
+    lore: {}
+    customModelData: 0
+    durability: 310
+    enchantments:
+      PROTECTION_ENVIRONMENTAL: 2
+      PROTECTION_EXPLOSIONS: 2
+      PROTECTION_FALL: 2
+      PROTECTION_FIRE: 2
+      PROTECTION_PROJECTILE: 2
+    effects: {}
+  kondenskostyum-leggings:
+    name: Поножи конденскостюма
+    material: DIAMOND_LEGGINGS
+    lore: {}
+    customModelData: 0
+    durability: 310
+    enchantments:
+      PROTECTION_ENVIRONMENTAL: 3
+      PROTECTION_EXPLOSIONS: 3
+      PROTECTION_FALL: 3
+      PROTECTION_FIRE: 3
+      PROTECTION_PROJECTILE: 3
+    effects: {}
+  kondenskostyum-chestplate:
+    name: Корпус конденскостюма
+    material: DIAMOND_CHESTPLATE
+    lore: {}
+    customModelData: 0
+    durability: 310
+    enchantments:
+      PROTECTION_ENVIRONMENTAL: 4
+      PROTECTION_EXPLOSIONS: 4
+      PROTECTION_FALL: 4
+      PROTECTION_FIRE: 4
+      PROTECTION_PROJECTILE: 4
+    effects: {}
+  kondenskostyum-helmet:
+    name: Респиратор конденскостюма
+    material: DIAMOND_HELMET
+    lore: {}
+    customModelData: 0
+    durability: 310
+    enchantments:
+      PROTECTION_ENVIRONMENTAL: 1
+      PROTECTION_EXPLOSIONS: 1
+      PROTECTION_FALL: 1
+      PROTECTION_FIRE: 1
+      PROTECTION_PROJECTILE: 1
+    effects: {}
