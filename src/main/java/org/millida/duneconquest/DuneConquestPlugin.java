@@ -15,14 +15,15 @@ import org.millida.duneconquest.handlers.PlayerHandler;
 
 import java.util.HashMap;
 
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class DuneConquestPlugin extends JavaPlugin {
     public static final String PREFIX = "&9&lDuneConquest &8>> &f";
 
     @Getter
-    private static DuneConquestPlugin instance;
+    static DuneConquestPlugin instance;
 
     @Getter
-    private ItemsConfiguration itemsConfiguration;
+    ItemsConfiguration itemsConfiguration;
 
     @Override
     public void onEnable() {
