@@ -1,6 +1,7 @@
 package org.millida.duneconquest.utils;
 
 import org.bukkit.ChatColor;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.List;
 

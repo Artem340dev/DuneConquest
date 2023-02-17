@@ -1,19 +1,13 @@
 package org.millida.duneconquest;
 
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.bukkit.Bukkit;
-import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import org.millida.duneconquest.commands.DuneConquestCommand;
-import org.millida.duneconquest.configuration.ItemsConfiguration;
+import org.millida.duneconquest.configuration.GroupsConfiguration;
 import org.millida.duneconquest.handlers.PlayerHandler;
-
-import java.util.HashMap;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class DuneConquestPlugin extends JavaPlugin {
@@ -23,21 +17,22 @@ public class DuneConquestPlugin extends JavaPlugin {
     static DuneConquestPlugin instance;
 
     @Getter
-    ItemsConfiguration itemsConfiguration;
+    Plugin plugin;
 
-    @Override
+    @Getter
+    GroupsConfiguration groupsConfiguration;
+
     public void onEnable() {
         instance = this;
 
-        this.itemsConfiguration = new ItemsConfiguration();
-        itemsConfiguration.enable();
+        this.groupsConfiguration = new GroupsConfiguration();
+        groupsConfiguration.enable();
 
         new DuneConquestCommand().register();
         Bukkit.getPluginManager().registerEvents(new PlayerHandler(), this);
     }
 
-    @Override
     public void onDisable() {
-        itemsConfiguration.disable();
+        groupsConfiguration.disable();
     }
 }

@@ -2,6 +2,7 @@ package org.millida.duneconquest.configuration;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.potion.PotionEffectType;
 import org.millida.duneconquest.DuneConquestPlugin;
 
 import java.io.File;

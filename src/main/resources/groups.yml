@@ -1,0 +1,144 @@
+groups:
+  sardaukar:
+    effects:
+      SPEED: 0
+    content:
+      sardaukar-boots:
+        name: Ботинки Сардаукаров
+        material: DIAMOND_BOOTS
+        lore: { }
+        customModelData: 0
+        durability: 310
+        guardLevel: 4
+        itemType: BOOTS
+      sardaukar-leggings:
+        name: Поножи Сардаукаров
+        material: DIAMOND_LEGGINGS
+        lore: { }
+        customModelData: 0
+        durability: 310
+        guardLevel: 7
+        itemType: LEGGINGS
+      sardaukar-chestplate:
+        name: Кираса Сардаукаров
+        material: DIAMOND_CHESTPLATE
+        lore: { }
+        customModelData: 0
+        durability: 310
+        guardLevel: 8
+        itemType: CHESTPLATE
+      sardaukar-helmet:
+        name: Шлем Сардаукаров
+        material: DIAMOND_HELMET
+        lore: { }
+        customModelData: 0
+        durability: 310
+        guardLevel: 4
+        itemType: HELMET
+  atreiders:
+    effects:
+      INCREASE_DAMAGE: 0
+    content:
+      atreiders-boots:
+        name: Ботинки Атрейдеров
+        material: DIAMOND_BOOTS
+        lore: { }
+        customModelData: 0
+        durability: 310
+        guardLevel: 5
+        itemType: BOOTS
+      atreiders-leggings:
+        name: Поножи Атрейдеров
+        material: DIAMOND_LEGGINGS
+        lore: { }
+        customModelData: 0
+        durability: 310
+        guardLevel: 6
+        itemType: LEGGINGS
+      atreiders-chestplate:
+        name: Нагрудник Атрейдеров
+        material: DIAMOND_CHESTPLATE
+        lore: { }
+        customModelData: 0
+        durability: 310
+        guardLevel: 9
+        itemType: CHESTPLATE
+      atreiders-helmet:
+        name: Шлем Атрейдеров
+        material: DIAMOND_HELMET
+        lore: { }
+        customModelData: 0
+        durability: 310
+        guardLevel: 5
+        itemType: HELMET
+  kharkoneness:
+    effects:
+      SLOW: 0
+    content:
+      kharkoneness-boots:
+        name: Берцы Харконеннов
+        material: DIAMOND_BOOTS
+        lore: { }
+        customModelData: 0
+        durability: 310
+        guardLevel: 6
+        itemType: BOOTS
+      kharkoneness-leggings:
+        name: Поножи Харконеннов
+        material: DIAMOND_LEGGINGS
+        lore: { }
+        customModelData: 0
+        durability: 310
+        guardLevel: 8
+        itemType: LEGGINGS
+      kharkoneness-chestplate:
+        name: Кираса Харконеннов
+        material: DIAMOND_CHESTPLATE
+        lore: { }
+        customModelData: 0
+        durability: 310
+        guardLevel: 11
+        itemType: CHESTPLATE
+      kharkoneness-helmet:
+        name: Шлем Харконеннов
+        material: DIAMOND_HELMET
+        lore: { }
+        customModelData: 0
+        durability: 310
+        guardLevel: 7
+        itemType: HELMET
+  kondenskostyum:
+    effects: {}
+    content:
+      kondenskostyum-boots:
+        name: Ботинки конденскостюма
+        material: DIAMOND_BOOTS
+        lore: { }
+        customModelData: 0
+        durability: 310
+        guardLevel: 2
+        itemType: BOOTS
+      kondenskostyum-leggings:
+        name: Поножи конденскостюма
+        material: DIAMOND_LEGGINGS
+        lore: { }
+        customModelData: 0
+        durability: 310
+        guardLevel: 3
+        itemType: LEGGINGS
+      kondenskostyum-chestplate:
+        name: Корпус конденскостюма
+        material: DIAMOND_CHESTPLATE
+        lore: { }
+        customModelData: 0
+        durability: 310
+        guardLevel: 4
+        itemType: CHESTPLATE
+      kondenskostyum-helmet:
+        name: Респиратор конденскостюма
+        material: DIAMOND_HELMET
+        lore: { }
+        customModelData: 0
+        durability: 310
+        guardLevel: 1
+        itemType: HELMET

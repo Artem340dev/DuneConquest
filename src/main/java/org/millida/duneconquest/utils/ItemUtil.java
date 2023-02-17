@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ItemUtil {
-    public static ItemStack getItem(String name, List<String> lore, List<ItemFlag> flags, Material material, Map<Enchantment, Integer> enchantments, int customModelData, short durability) {
+    public static ItemStack getItem(String name, List<String> lore, Map<Attribute, AttributeModifier> attributes, Material material, int customModelData, short durability) {
         ItemStack item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();
 
@@ -22,8 +22,7 @@ public class ItemUtil {
         meta.setDisplayName(ChatUtil.parseColor(name));
         meta.setLore(ChatUtil.parseColor(lore));
 
-        flags.forEach(meta::addItemFlags);
-        enchantments.forEach((enchant, level) -> meta.addEnchant(enchant, level, true));
+        attributes.forEach(meta::addAttributeModifier);
         item.setDurability(durability);
 
         item.setItemMeta(meta);
