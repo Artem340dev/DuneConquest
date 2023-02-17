@@ -13,7 +13,7 @@ import java.util.UUID;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class PlayerActiveEquipmentData implements RegisteredObject {
-    private static HashMap<UUID, PlayerActiveEquipmentData> data = new HashMap<>();
+    static HashMap<UUID, PlayerActiveEquipmentData> data = new HashMap<>();
 
     @Getter
     Player player;

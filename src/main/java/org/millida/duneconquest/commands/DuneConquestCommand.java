@@ -2,8 +2,10 @@ package org.millida.duneconquest.commands;
 
 import org.bukkit.entity.Player;
 import org.millida.duneconquest.DuneConquestPlugin;
+import org.millida.duneconquest.handlers.events.ArmorEquipEvent;
 import org.millida.duneconquest.objects.DuneConquestItem;
 import org.millida.duneconquest.objects.DuneConquestItemGroup;
+import org.millida.duneconquest.objects.PlayerActiveEquipmentData;
 import org.millida.duneconquest.utils.ChatUtil;
 
 import java.util.Optional;

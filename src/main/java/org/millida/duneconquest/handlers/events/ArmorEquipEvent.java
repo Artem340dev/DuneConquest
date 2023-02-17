@@ -15,7 +15,7 @@ import org.millida.duneconquest.objects.DuneConquestItemGroup;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ArmorEquipEvent extends PlayerEvent {
     @Getter
-    private static HandlerList handlerList = new HandlerList();
+    static HandlerList handlerList = new HandlerList();
 
     @Getter
     DuneConquestItemGroup group;

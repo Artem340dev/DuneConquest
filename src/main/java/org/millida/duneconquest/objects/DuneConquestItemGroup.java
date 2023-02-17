@@ -16,7 +16,7 @@ import java.util.*;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class DuneConquestItemGroup implements RegisteredObject {
-    private static HashMap<String, DuneConquestItemGroup> groups = new HashMap<>();
+    static HashMap<String, DuneConquestItemGroup> groups = new HashMap<>();
 
     @Getter
     String groupId;
