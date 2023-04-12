@@ -3,10 +3,10 @@ package org.millida.duneconquest;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.bukkit.Bukkit;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.millida.duneconquest.commands.DuneConquestCommand;
 import org.millida.duneconquest.configuration.GroupsConfiguration;
+import org.millida.duneconquest.configuration.MainConfiguration;
 import org.millida.duneconquest.handlers.PlayerHandler;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -17,18 +17,21 @@ public class DuneConquestPlugin extends JavaPlugin {
     static DuneConquestPlugin instance;
 
     @Getter
-    Plugin plugin;
+    GroupsConfiguration groupsConfiguration;
 
     @Getter
-    GroupsConfiguration groupsConfiguration;
+    MainConfiguration mainConfiguration;
 
     public void onEnable() {
         instance = this;
 
-        this.groupsConfiguration = new GroupsConfiguration();
+        this.groupsConfiguration = GroupsConfiguration.builder().build();
         groupsConfiguration.enable();
 
-        new DuneConquestCommand().register();
+        this.mainConfiguration = MainConfiguration.builder().build();
+        mainConfiguration.enable();
+
+        DuneConquestCommand.builder().build().register();
         Bukkit.getPluginManager().registerEvents(new PlayerHandler(), this);
     }
 

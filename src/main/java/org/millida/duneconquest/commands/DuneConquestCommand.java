@@ -1,16 +1,16 @@
 package org.millida.duneconquest.commands;
 
+import lombok.Builder;
 import org.bukkit.entity.Player;
 import org.millida.duneconquest.DuneConquestPlugin;
-import org.millida.duneconquest.handlers.events.ArmorEquipEvent;
 import org.millida.duneconquest.objects.DuneConquestItem;
 import org.millida.duneconquest.objects.DuneConquestItemGroup;
-import org.millida.duneconquest.objects.PlayerActiveEquipmentData;
 import org.millida.duneconquest.utils.ChatUtil;
 
 import java.util.Optional;
 
 public class DuneConquestCommand extends AbstractCommand {
+    @Builder
     public DuneConquestCommand() {
         super("duneconquest", "duneconquest.duneconquest", "У вас нет прав duneconquest.duneconquest!");
     }

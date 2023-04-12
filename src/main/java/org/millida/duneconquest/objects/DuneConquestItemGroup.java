@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
+import org.bukkit.craftbukkit.v1_17_R1.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -39,32 +40,62 @@ public class DuneConquestItemGroup implements RegisteredObject {
     }
 
     public boolean hasGroup(PlayerInventory inventory) {
-        ItemStack helmet = this.findItemOrNullByItemType(DuneConquestItem.DuneConquestItemType.HELMET).get().getBukkitItem();
-        ItemStack chestplate = this.findItemOrNullByItemType(DuneConquestItem.DuneConquestItemType.CHESTPLATE).get().getBukkitItem();
-        ItemStack leggings = this.findItemOrNullByItemType(DuneConquestItem.DuneConquestItemType.LEGGINGS).get().getBukkitItem();
-        ItemStack boots = this.findItemOrNullByItemType(DuneConquestItem.DuneConquestItemType.BOOTS).get().getBukkitItem();
+        if (inventory.getHelmet() == null || inventory.getChestplate() == null || inventory.getLeggings() == null || inventory.getBoots() == null) return false;
 
-        if (helmet.isSimilar(inventory.getHelmet()) && chestplate.isSimilar(inventory.getChestplate()) && leggings.isSimilar(inventory.getLeggings()) && boots.isSimilar(inventory.getBoots())) {
-            return true;
-        }
+        net.minecraft.world.item.ItemStack inventoryHelmet = CraftItemStack.asNMSCopy(inventory.getHelmet().clone());
+        if (!inventoryHelmet.hasTag() || !inventoryHelmet.getTag().hasKey("duneGroupName") || !inventoryHelmet.getTag().getString("duneGroupName").equals(groupId)) return false;
 
-        return false;
+        net.minecraft.world.item.ItemStack inventoryChestplate = CraftItemStack.asNMSCopy(inventory.getChestplate().clone());
+        if (!inventoryChestplate.hasTag() || !inventoryChestplate.getTag().hasKey("duneGroupName") || !inventoryChestplate.getTag().getString("duneGroupName").equals(groupId)) return false;
+
+        net.minecraft.world.item.ItemStack inventoryLeggings = CraftItemStack.asNMSCopy(inventory.getLeggings().clone());
+        if (!inventoryLeggings.hasTag() || !inventoryLeggings.getTag().hasKey("duneGroupName") || !inventoryLeggings.getTag().getString("duneGroupName").equals(groupId)) return false;
+
+        net.minecraft.world.item.ItemStack inventoryBoots = CraftItemStack.asNMSCopy(inventory.getBoots().clone());
+        if (!inventoryBoots.hasTag() || !inventoryBoots.getTag().hasKey("duneGroupName") || !inventoryBoots.getTag().getString("duneGroupName").equals(groupId)) return false;
+
+        return true;
     }
 
     public Optional<DuneConquestItem> findItemOrNullByItemId(String itemId) {
-        return items.values().stream().filter(item -> item.getItemId().equals(itemId)).findFirst();
+        return items.values()
+                .stream()
+                .filter(item -> item.getItemId().equals(itemId))
+                .findFirst();
     }
 
     public Optional<DuneConquestItem> findItemOrNullByItemType(DuneConquestItem.DuneConquestItemType type) {
-        return items.values().stream().filter(item -> item.getType() == type).findFirst();
+        return items.values()
+                .stream()
+                .filter(item -> item.getType() == type)
+                .findFirst();
     }
 
     public static Optional<DuneConquestItemGroup> findGroupOrNullByItemId(String itemId) {
-        return groups.values().stream().filter(group -> group.findItemOrNullByItemId(itemId).isPresent()).findFirst();
+        return groups.values()
+                .stream()
+                .filter(group -> group.findItemOrNullByItemId(itemId).isPresent())
+                .findFirst();
     }
 
     public static Optional<DuneConquestItemGroup> findGroupOrNullByPlayer(Player player) {
-        return groups.values().stream().filter(group -> group.hasGroup(player.getInventory())).findFirst();
+        return groups.values()
+                .stream()
+                .filter(group -> group.hasGroup(player.getInventory()))
+                .findFirst();
+    }
+
+    public static Optional<DuneConquestItem> findItemOrNullByBukkitItem(ItemStack item) {
+        return groups.values()
+                .stream()
+                .filter(group -> CraftItemStack.asNMSCopy(item).hasTag())
+                .filter(group -> CraftItemStack.asNMSCopy(item).getTag().hasKey("duneGroupName"))
+                .filter(group -> CraftItemStack.asNMSCopy(item).getTag().hasKey("duneType"))
+                .filter(group -> CraftItemStack.asNMSCopy(item).getTag().getString("duneGroupName").equals(group.getGroupId()))
+                .map(group -> group.getItems().values())
+                .flatMap(Collection::stream)
+                .filter(duneItem -> duneItem.getType().equals(DuneConquestItem.DuneConquestItemType.valueOf(CraftItemStack.asNMSCopy(item).getTag().getString("duneType"))))
+                .findFirst();
     }
 
     public static Collection<DuneConquestItemGroup> findAllGroups() {

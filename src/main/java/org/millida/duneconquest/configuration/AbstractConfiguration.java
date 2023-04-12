@@ -1,18 +1,23 @@
 package org.millida.duneconquest.configuration;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.experimental.FieldDefaults;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.potion.PotionEffectType;
 import org.millida.duneconquest.DuneConquestPlugin;
 
 import java.io.File;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public abstract class AbstractConfiguration {
-    private FileConfiguration configuration;
-    private String name;
-    private File file;
+    @Getter
+    FileConfiguration configuration;
+
+    String name;
+    File file;
 
     public AbstractConfiguration(String name) {
         this.name = name;
@@ -36,10 +41,6 @@ public abstract class AbstractConfiguration {
             configuration.save(file);
         } catch (Exception e) {
         }
-    }
-
-    protected FileConfiguration getConfiguration() {
-        return configuration;
     }
 
     public abstract void enable();

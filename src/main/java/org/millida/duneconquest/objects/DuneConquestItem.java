@@ -1,6 +1,5 @@
 package org.millida.duneconquest.objects;
 
-import com.google.common.collect.HashBiMap;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;

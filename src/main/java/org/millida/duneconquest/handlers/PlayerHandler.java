@@ -1,73 +1,53 @@
 package org.millida.duneconquest.handlers;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.*;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
+import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.event.inventory.PrepareAnvilEvent;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+import org.bukkit.event.player.PlayerCommandSendEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.millida.duneconquest.handlers.events.ArmorEquipEvent;
-import org.millida.duneconquest.objects.PlayerActiveEquipmentData;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.AnvilInventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.potion.PotionEffect;
+import org.millida.duneconquest.DuneConquestPlugin;
+import org.millida.duneconquest.objects.DuneConquestItem;
 import org.millida.duneconquest.objects.DuneConquestItemGroup;
+import org.millida.duneconquest.threads.DuneEquipGroupThread;
+import org.millida.duneconquest.threads.PlayerEquipGroupTrackThread;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class PlayerHandler implements Listener {
     @EventHandler
-    public void onInteract(PlayerInteractEvent event) {
-        Optional<DuneConquestItemGroup> groupOptional = DuneConquestItemGroup.findGroupOrNullByPlayer(event.getPlayer());
-        Optional<PlayerActiveEquipmentData> equipmentDataOptional = PlayerActiveEquipmentData.findEquipmentDataOrNullByPlayer(event.getPlayer());
-
-        this.callArmorEquipEvent(event.getPlayer(), groupOptional, equipmentDataOptional);
+    public void onJoin(PlayerJoinEvent event) {
+        PlayerEquipGroupTrackThread.builder().player(event.getPlayer()).build().start(DuneConquestPlugin.getInstance());
     }
 
     @EventHandler
-    public void onClick(InventoryClickEvent event) {
-        Player player = (Player) event.getWhoClicked();
-        Optional<DuneConquestItemGroup> groupOptional = DuneConquestItemGroup.findGroupOrNullByPlayer(player);
-        Optional<PlayerActiveEquipmentData> equipmentDataOptional = PlayerActiveEquipmentData.findEquipmentDataOrNullByPlayer(player);
+    public void onRepair(InventoryClickEvent event) {
+        if (!(event instanceof AnvilInventory)) return;
 
-        this.callArmorEquipEvent(player, groupOptional, equipmentDataOptional);
-    }
+        AnvilInventory inventory = (AnvilInventory) event.getInventory();
+        if (inventory.getResult() == null) return;
 
-    @EventHandler
-    public void onEquipArmor(ArmorEquipEvent event) {
-        if (event.getAction().equals(ArmorEquipEvent.EquipmentAction.TAKE_OFF)) {
-            event.getGroup().getEffects().forEach(potionEffect -> {
-                if (event.getPlayer().hasPotionEffect(potionEffect.getType())) {
-                    event.getPlayer().removePotionEffect(potionEffect.getType());
-                }
-            });
-        }
+        Optional<DuneConquestItem> itemOptional = DuneConquestItemGroup.findItemOrNullByBukkitItem(inventory.getResult());
+        if (!itemOptional.isPresent()) return;
 
-        if (event.getAction().equals(ArmorEquipEvent.EquipmentAction.PUT_ON)) {
-            event.getPlayer().addPotionEffects(event.getGroup().getEffects());
-        }
-    }
-
-    private void callArmorEquipEvent(Player player, Optional<DuneConquestItemGroup> groupOptional, Optional<PlayerActiveEquipmentData> activeEquipmentDataOptional) {
-        if (!groupOptional.isPresent() && activeEquipmentDataOptional.isPresent()) {
-            activeEquipmentDataOptional.get().unregister();
-
-            Bukkit.getPluginManager().callEvent(ArmorEquipEvent.builder()
-                    .player(player)
-                    .group(activeEquipmentDataOptional.get().getGroup())
-                    .action(ArmorEquipEvent.EquipmentAction.TAKE_OFF)
-                    .build());
-        }
-
-        if (!activeEquipmentDataOptional.isPresent() && groupOptional.isPresent()) {
-            PlayerActiveEquipmentData.builder()
-                    .player(player)
-                    .group(groupOptional.get())
-                    .build()
-                    .register();
-
-            Bukkit.getPluginManager().callEvent(ArmorEquipEvent.builder()
-                    .player(player)
-                    .group(groupOptional.get())
-                    .action(ArmorEquipEvent.EquipmentAction.PUT_ON)
-                    .build());
-        }
+        inventory.setRepairCost(itemOptional.get().getBukkitItem().getType().getMaxDurability() - itemOptional.get().getBukkitItem().getDurability());
+        inventory.setMaximumRepairCost(itemOptional.get().getBukkitItem().getType().getMaxDurability() - itemOptional.get().getBukkitItem().getDurability());
     }
 }

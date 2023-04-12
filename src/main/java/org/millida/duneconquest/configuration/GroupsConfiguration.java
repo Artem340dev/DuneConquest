@@ -1,9 +1,11 @@
 package org.millida.duneconquest.configuration;
 
+import lombok.Builder;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
-import org.bukkit.enchantments.Enchantment;
+import org.bukkit.event.inventory.PrepareAnvilEvent;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -14,6 +16,7 @@ import org.millida.duneconquest.utils.ItemUtil;
 import java.util.*;
 
 public class GroupsConfiguration extends AbstractConfiguration {
+    @Builder
     public GroupsConfiguration() {
         super("groups.yml");
     }
@@ -41,7 +44,7 @@ public class GroupsConfiguration extends AbstractConfiguration {
                 int guardLevel = this.getConfiguration().getInt("groups." + groupId + ".content." + itemId + ".guardLevel");
                 int customModelData = this.getConfiguration().getInt("groups." + groupId + ".content." + itemId + ".customModelData");
 
-                ItemStack bukkitItem = ItemUtil.getItem(name, lore, Map.of(Attribute.GENERIC_ARMOR, new AttributeModifier("generic.armor", guardLevel, AttributeModifier.Operation.ADD_NUMBER)), material, customModelData, (short) durability);
+                ItemStack bukkitItem = ItemUtil.getItem(name, lore, Map.of(Attribute.GENERIC_ARMOR, new AttributeModifier("generic.armor", guardLevel, AttributeModifier.Operation.ADD_NUMBER)), Map.of("duneGroupName", groupId, "duneType", itemType.name()), material, customModelData, durability);
                 DuneConquestItem item = DuneConquestItem.builder().itemId(itemId).bukkitItem(bukkitItem).type(itemType).build();
                 items.put(itemId, item);
             }
