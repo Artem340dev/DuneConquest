@@ -8,6 +8,7 @@ import org.millida.duneconquest.commands.DuneConquestCommand;
 import org.millida.duneconquest.configuration.GroupsConfiguration;
 import org.millida.duneconquest.configuration.MainConfiguration;
 import org.millida.duneconquest.handlers.PlayerHandler;
+import org.millida.duneconquest.utils.ChatUtil;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class DuneConquestPlugin extends JavaPlugin {
@@ -33,6 +34,8 @@ public class DuneConquestPlugin extends JavaPlugin {
 
         DuneConquestCommand.builder().build().register();
         Bukkit.getPluginManager().registerEvents(new PlayerHandler(), this);
+
+        this.getLogger().info(ChatUtil.parseColor("&aIs an actual version for 17.04.2023"));
     }
 
     public void onDisable() {
